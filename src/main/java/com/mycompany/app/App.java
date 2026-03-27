@@ -1,19 +1,25 @@
 package com.mycompany.app;
 
-/**
- * Hello world!
- */
+import com.sun.net.httpserver.HttpServer;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+
 public class App {
 
     private static final String MESSAGE = "Welcome to vaibhav Docker hosted jenkins 2nd pipeline";
 
-    public App() {}
+    public static void main(String[] args) throws Exception {
 
-    public static void main(String[] args) {
-        System.out.println(MESSAGE);
-    }
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
-    public String getMessage() {
-        return MESSAGE;
+        server.createContext("/", exchange -> {
+            exchange.sendResponseHeaders(200, MESSAGE.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(MESSAGE.getBytes());
+            os.close();
+        });
+
+        server.start();
+        System.out.println("Server started on port 8080");
     }
 }
