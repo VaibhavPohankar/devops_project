@@ -44,9 +44,10 @@ pipeline {
             }
         }
 
-        stage('Docker Push') {
+       stage('Docker Push') {
             steps {
                 withCredentials([string(credentialsId: 'docker_PAT', variable: 'DOCKER_TOKEN')]) {
+
                     sh '''
                         echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USER" --password-stdin
                         docker push ${DOCKER_HUB_IMAGE}
