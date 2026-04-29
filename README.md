@@ -47,7 +47,7 @@ docker build -t your-docker-user/vibh-app:v1 .
 docker run -d -p 80:9090 your-docker-user/vibh-app:v1
 
 Repository Structure
-
+```
 .
 ├── jenkins/
 │   └── Jenkinsfile         # CI/CD Logic & Credentials Management
@@ -59,7 +59,7 @@ Repository Structure
 ├── Vagrantfile             # Infrastructure-as-Code for Local Dev
 ├── .gitignore              # Secure exclusion of secrets/binaries
 └── Screenshots/            # Technical proof of deployment
-
+```
 
 Author
 Vaibhav Pohankar Cloud & DevOps Engineer | AWS | Docker | Jenkins
